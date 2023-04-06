@@ -1,0 +1,22 @@
+<h1>LIKELION 11 Blog Project</h1>
+<form method="POST" action="{% url 'search' %}">
+    {% csrf_token %}
+    <input type="search" placeholder="Search" name="searched" >
+    <button type="submit"> Search </button>
+</form>
+<a href="{% url 'new' %}">새 글 작성하기</a>
+<div>
+{% if searched %}
+    {% for search_list in search_result %}
+    <a href="{%url 'detail' search_list.id %}">
+        <h2>{{search_list.title}}</h2>
+    </a>
+    <p>{{search_list.content}}</p>
+    <p>{{search_list.created_at}}</p>
+    {% endfor %}
+<a href="{% url 'home' %}">홈</a>
+{% else %}
+<h1> 찾고 있는 내용이 없습니다. </h1>
+<a href="{% url 'home' %}">홈</a>
+{% endif %}
+</div>

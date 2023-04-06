@@ -4,3 +4,7 @@
 <h2>{{blog.title}}</h2>
 <p>{{blog.content}}</p>
 <p>{{blog.created_at}}</p>
+
+<a href="{% url 'home' %}"> 홈으로 </a>
+<a href="{% url 'edit' blog.id %}"> 수정하기 </a>
+<a href="{% url 'delete' blog.id %}"> 삭제하기 </a>
